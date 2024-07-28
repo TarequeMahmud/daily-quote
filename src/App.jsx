@@ -1,34 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import quotes from "./assets/quotes.json";
 import "./App.css";
-
-const quoteGenerator = (qutots) => {
-  return quotes[Math.floor(Math.random() * quotes.length)];
-};
-
-const colorGenerator = () => {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
+import { colorGenerator, quoteGenerator } from "./utils/utils.js";
 
 function App() {
   const [quote, setQuote] = useState(quoteGenerator(quotes));
   const [color, setColor] = useState(colorGenerator());
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--color", color);
+    return () => document.documentElement.style.removeProperty("--color");
+  }, [color]);
   return (
-    <div className="background-div" style={{ "--color": color }}>
+    <div className="background-div">
       <div className="quote-div">
-        <p>{quote.quote}</p>
-        <p>{quote.author}</p>
+        <p className="quote">{quote.quote}</p>
+        <p className="author">{quote.author}</p>
         <button
           onClick={() => {
             setQuote(quoteGenerator(quotes));
             setColor(colorGenerator());
           }}
-          style={{ position: "absolute", bottom: "10px" }}
+          className="button"
         >
           Change Quote
         </button>

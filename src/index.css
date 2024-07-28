@@ -4,13 +4,14 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(255, 255, 255, 0.637);
+  --background-color: #0e0d0dd5;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color: black;
 }
 
 .background-div {
@@ -26,8 +27,10 @@
 }
 
 .quote-div {
-  padding: 20px;
-  background-color: rgba(255, 255, 255, 0.774);
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 50px;
+  background-color: var(--background-color);
   height: 400px;
   width: 600px;
   display: flex;
@@ -35,6 +38,16 @@
   justify-content: center;
   align-items: center;
   position: relative;
+}
+
+.quote {
+  color: var(--color);
+}
+
+.author {
+  position: absolute;
+  bottom: 80px;
+  color: var(--color);
 }
 
 a {
@@ -69,6 +82,8 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  position: absolute;
+  bottom: 20px;
 }
 button:hover {
   border-color: #646cff;

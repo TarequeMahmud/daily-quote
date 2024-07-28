@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="background-div">
       <div className="quote-div">
+        <h1 className="heading">Daily Quote</h1>
         <p className="quote">{quote.quote}</p>
         <p className="author">{quote.author}</p>
         <button
